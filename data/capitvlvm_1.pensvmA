@@ -1,31 +1,31 @@
 # PENSVM A
 
-Nilus fluvi-- est. | us
-Nilus et Rhenus fluvi-- --. | us sunt
-Creta insul-- --. | a est
-Creta et Rhodus insula-- sunt. | ae
-Brundisium oppid-- --. | um est
-Brundisium et Tusculum oppid-- --. | ae sunt
+ls|Nilus fluvi~ est.|us
+ls|Nilus et Rhenus fluvi~ ~.|us sunt
+ls|Creta insul~ ~.|a est
+ls|Creta et Rhodus insula~ sunt.|ae
+ls|Brundisium oppid~ est.|um
+ls|Brundisium et Tusculum oppid~ ~.|ae sunt
 
-Rhenus fluvi-- magn-- est. | us us
-Tiberis est fluvi-- parv--. | us us
-Rhenus et Danuvius non fluvi-- parv--, sed fluvi-- magn-- sunt. | i ii ii
-Sardinia insul-- magn-- est. | a a
-Melita insul-- parv-- est. | a a
-Sardinia et Sicilia non insul-- parv--, sed insul-- magn-- sunt. | a a a a
-Brundisium non oppid-- parv--, sed oppid-- magn-- est. | um um um um
-Tusculum et Delphi non oppid-- magn--, sed oppid-- parv-- sunt.
+ls|Rhenus fluvi~ magn~ est.|us us
+ls|Tiberis est fluvi~ parv~.|us us
+ls|Rhenus et Danuvius non fluvi~ parv~, sed fluvi~ magn~ sunt.|i i i i
+ls|Sardinia insul~ magn~ est.|a a
+ls|Melita insul~ parv~ est.|a a
+ls|Sardinia et Sicilia non insul~ parv~, sed insul~ magn~ sunt.|ae ae ae ae
+ls|Brundisium non oppid~ parv~, sed oppid~ magn~ est.|um um um um
+ls|Tusculum et Delphi non oppid~ magn~, sed oppid~ parv~ sunt.|a a a a
 
-Creta insul-- Graec-- est.
-Lesbos et Chios et Naxus sunt insul-- Graec--.
-In Gracia mult-- insul-- sunt.
-In Gallia sunt mult-- fluvi--.
-In Italia mult-- oppid-- sunt.
-In Arabia sunt pauc-- fluvi-- et pauc oppid--.
+ls|Creta insul~ Graec~ est.|a a
+ls|Lesbos et Chios et Naxus sunt insul~ Graec~.|ae ae
+ls|In Gracia mult~ insul~ sunt.|ae ae
+ls|In Gallia sunt mult~ fluvi~.|i i
+ls|In Italia mult~ oppid~ sunt.|a a
+ls|In Arabia sunt pauc~ fluvi~ et pauc oppid~.|i i a a
 
-A et B letter-- Latin-- sunt.
-C quoque litter-- Latin-- est.
-*Multi* et *pauci* vocabul-- Latin-- sunt.
-*Ubi* quoque vocabul-- Latin-- est.
-I et II numer-- Roman-- sunt.
-III quoque nume-- Roman-- est.
+ls|A et B letter~ Latin~ sunt.|ae ae
+ls|C quoque litter~ Latin~ est.|a a
+ls|*Multi* et *pauci* vocabul~ Latin~ sunt.|a a
+ls|*Ubi* quoque vocabul~ Latin~ est.|um um
+ls|I et II numer~ Roman~ sunt.|i i
+ls|III quoque nume~ Roman~ est.|us us

@@ -3,11 +3,13 @@
 # load command line args
 import argparse
 parser = argparse.ArgumentParser()
+parser.add_argument('--action', choices=['train', 'pensvmC', 'data'], default='train')
 parser_io = parser.add_argument_group('input/output')
 parser_io.add_argument('--model_path')
 parser_io.add_argument('--data_path', default='data/cap_1.section1')
-parser_io.add_argument('--capitvlvm', type=int)
+parser_io.add_argument('--capitvlvm', type=int, required=True)
 parser_io.add_argument('--data_dir', default='data')
+parser_io.add_argument('--save_every', type=int, default=20)
 parser_architecture = parser.add_argument_group('architecture')
 parser_architecture.add_argument('--hidden_size', type=int, default=512)
 parser_architecture.add_argument('--seq_len', type=int, default=100)
@@ -15,6 +17,7 @@ parser_architecture.add_argument('--num_layers', type=int, default=3)
 parser_optimizer = parser.add_argument_group('optimizer')
 parser_optimizer.add_argument('--lr', type=float, default=0.002)
 parser_optimizer.add_argument('--epochs', type=int, default=100)
+parser_optimizer.add_argument('--batch_size', type=int, default=10)
 parser_optimizer.add_argument('--load_checkpoint', action='store_true')
 parser_debug = parser.add_argument_group('debug')
 parser_debug.add_argument('--output_seq_len', type=int, default=200)
@@ -33,9 +36,11 @@ dirname = os.path.dirname(args.model_path)
 os.makedirs(dirname, exist_ok=True)
 
 # imports
-import glob
+import string
 import re
-from collections import Counter
+import glob
+
+from DataLoader import DataLoader, Batchify, shuffle, scramble
 
 # initialize pytorch
 import torch
@@ -64,17 +69,18 @@ class RNN(nn.Module):
 
 
     def generate_sample(self, **kwargs):
-        return self.generate_samples(**kwargs)[0][1]
+        samples, logprobs = self.generate_samples(**kwargs)
+        return samples[0]
 
         
     def generate_samples(
             rnn,
-            prompt='\n\n',
+            prompt='',
             max_length=100,
             sentence_break=False,
             paragraph_break=True,
-            temperature=0.8,
-            beams=3,
+            temperature=1, #0.8,
+            beams=4,
             samples_per_beam=2,
             ):
       with torch.no_grad():
@@ -133,29 +139,72 @@ class RNN(nn.Module):
         #for i,text in enumerate(texts):
             #print(f'{logprobs[i]:0.4f} {text}')
             #print("texts=",texts)
-        return list(zip(logprobs, texts))
+        texts = [text.strip() for text in texts]
+        return texts, logprobs
 
 
 class Latin():
-    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,;:"\'?*!#_-[]{}() \n'
+    chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,;:"\'?*!#_-[]{}() \n|~'
 
     # char to index and index to char maps
     char_to_ix = { ch:i for i,ch in enumerate(chars) }
     ix_to_char = { i:ch for i,ch in enumerate(chars) }
 
-    def text_to_tensor(self, text):
+    def text_to_tensor(self, text, min_size=0, max_size=256):
         data = []
-        for i, ch in enumerate(text):
+        padding_length = min_size - len(text)
+        text += ' '*padding_length
+        for i, ch in enumerate(text[:max_size]):
             data.append(self.char_to_ix[ch])
         data = torch.tensor(data)
         data = torch.unsqueeze(data, dim=1)
         return data
 
-    def texts_to_tensor(self, texts):
-        tensors = [self.text_to_tensor(text) for text in texts]
+    def texts_to_tensor(self, texts, max_size=256):
+        min_size = max([len(text) for text in texts])
+        tensors = [self.text_to_tensor(text, min_size=min_size) for text in texts]
         return torch.cat(tensors, dim=1)
 
+    def tokenize(self, text):
+        tokens = re.findall(r"\w+|[^\w\s]", text, re.UNICODE)
+        return tokens
+
+    def detokenize(self, tokens):
+        newtokens = []
+        for i, token in enumerate(tokens):
+            if i == 0 or token[0] in string.punctuation or token[0] == ' ':
+                newtokens.append(token)
+            else:
+                newtokens.append(' ' + token)
+        return ''.join(newtokens)
+
 language = Latin()
+
+
+def eval_pensvm(rnn, filepath, verbose=False, max_tests=None):
+    # load the test cases
+    lines = open(filepath, 'r').readlines()
+    lines = [line.strip() for line in lines]
+    lines = [line for line in lines if len(line)>0 and line[0] != '#']
+
+    # compute scores
+    scores = {'topk': 0, 'top1': 0, 'tests': 0}
+    for line in lines:
+        sections = line.split('|')
+        prompt = '|'.join(sections[:2])+'|'
+        samples, logprobs = rnn.generate_samples(prompt=prompt)
+        if verbose:
+            print(f'true=<<{line}>>')
+            print(f'pred=<<{samples[0]}>>')
+            print('---')
+        if samples[0] == line:
+            scores['top1'] += 1
+        if line in samples:
+            scores['topk'] += 1
+        scores['tests'] += 1
+        if max_tests and scores['tests'] >= max_tests:
+            break
+    return scores
 
 
 def eval_pensvmC():
@@ -190,58 +239,13 @@ def eval_pensvmC():
         print(text)
 
 
-class DataLoader():
-
-    def __init__(self, paths):
-        # load the data
-        file_contents = []
-        for path in paths:
-            with open(path, 'rt', encoding='utf-8') as fin:
-                file_contents.append(fin.read())
-        data = '\n\n'.join(file_contents)
-        self.data = data
-
-        # gather statistics
-        logger.info(f'len(data)={len(data)}')
-        grammar_tokens = data.split()
-        logger.debug(f'len(grammar_tokens)={len(grammar_tokens)}')
-        tokens = re.findall(r"\w+|[^\w\s]", data, re.UNICODE)
-        logger.info(f'len(tokens)={len(tokens)}')
-        tokens_counter = Counter(tokens)
-        logger.debug(f'tokens_counter.most_common(10)={tokens_counter.most_common(10)}')
-        #logger.debug(f'tokens_counter.most_common()[-10:]={tokens_counter.most_common()[-10:]}')
-     
-        #tokens_lower = re.findall(r"\w+|[^\w\s]", data.lower(), re.UNICODE)
-        #logger.info(f'len(tokens_lower)={len(tokens_lower)}')
-        #tokens_lower_counter = Counter(tokens_lower)
-        #logger.debug(f'tokens_lower_counter.most_common(10)={tokens_lower_counter.most_common(10)}')
-        #logger.debug(f'tokens_lower_counter.most_common()[-10:]={tokens_lower_counter.most_common()[-10:]}')
-
-    def __iter__(self):
-        return DataIterator(self.data)
-
-class DataIterator():
-    def __init__(self, data):
-        self.paragraphs = data.split('\n\n')
-        self.i = 0
-
-    def __next__(self):
-        if self.i >= len(self.paragraphs):
-            raise StopIteration
-        paragraph = self.paragraphs[self.i]
-        self.i += 1
-        return paragraph.strip()
-
-
 def train():
 
     # load training data
     paths = []
     for capitvlvm in range(1, args.capitvlvm+1):
-        globpath = os.path.join(args.data_dir, 'capitvlvm_'+str(capitvlvm)+'.section*')
+        globpath = os.path.join(args.data_dir, 'capitvlvm_'+str(capitvlvm)+'.section?')
         paths.extend(list(glob.glob(globpath)))
-
-    data_loader = DataLoader(paths)
 
     # model instance
     rnn = RNN(language, args.hidden_size, args.num_layers).to(device)
@@ -250,21 +254,25 @@ def train():
     if args.load_checkpoint:
         logging.info('loading model')
         rnn.load_state_dict(torch.load(args.model_path))
-        logging.info('loaded model')
+        logging.debug('loaded model')
     
     # loss function and optimizer
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(rnn.parameters(), lr=args.lr)
     
+    data_loader = DataLoader(language, paths)
+
     # training loop
     for epoch_i in range(1, args.epochs+1):
         running_loss = 0
-        
-        for sample_i,sample in enumerate(data_loader):
+
+        data = scramble(data_loader, buffer_size=64*args.batch_size)
+        data = Batchify(data, batch_size=args.batch_size)
+
+        for sample_i,batch in enumerate(data):
             # convert data from chars to indices
-            data = language.text_to_tensor(sample)
+            data = language.texts_to_tensor(batch)
             data = data.to(device)
-            #logger.debug(f'data.shape={data.shape}')
             hidden_state = None
     
             input_seq = data[:-1]
@@ -272,9 +280,12 @@ def train():
             
             # forward pass
             output, hidden_state = rnn(input_seq, hidden_state)
+
             
             # compute loss
-            loss = loss_fn(torch.squeeze(output), torch.squeeze(target_seq))
+            output_ = torch.flatten(output, 0, 1)
+            target_seq_ = torch.flatten(target_seq, 0, 1)
+            loss = loss_fn(output_, target_seq_)
             running_loss += loss.item()
             
             # compute gradients and take optimizer step
@@ -286,12 +297,44 @@ def train():
         print("Epoch: {0} \t Loss: {1:.8f}".format(epoch_i, running_loss/sample_i))
 
         print("----------------------------------------")
-        print(rnn.generate_sample()) 
+        #print(rnn.generate_sample(prompt='lw|Sicilia ~ est.|'))
+        #print(rnn.generate_sample(prompt='lw|Italia insula ~ est.|'))
+        #print(rnn.generate_sample(prompt='lw|Rhenus ~ est.|'))
+        #print(rnn.generate_sample(prompt='lw|Brundisium ~ est.|'))
+        max_tests = 3
+        scores = eval_pensvm(rnn, 'data/capitvlvm_1.pensvmA', verbose=True, max_tests=max_tests)
+        scores = eval_pensvm(rnn, 'data/capitvlvm_1.pensvmB', verbose=True, max_tests=max_tests)
+        scores = eval_pensvm(rnn, 'data/capitvlvm_1.pensvmC', verbose=True, max_tests=max_tests)
+        #print("scores=",scores)
         print("\n----------------------------------------")
-    torch.save(rnn.state_dict(), args.model_path)
+
+        if (epoch_i+1)%args.save_every == 0:
+            logging.info('saving model weights')
+            torch.save(rnn.state_dict(), args.model_path)
+            logging.debug('saved model weights')
         
+
 if __name__ == '__main__':
-    #eval_pensvmC()
-    train()
+    if args.action == 'train':
+        train()
+
+    elif args.action == 'pensvmC':
+        eval_pensvmC()
+
+    elif args.action == 'data':
+        paths = []
+        for capitvlvm in range(1, args.capitvlvm+1):
+            globpath = os.path.join(args.data_dir, 'capitvlvm_'+str(capitvlvm)+'.section*')
+            paths.extend(list(glob.glob(globpath)))
+
+        data_loader = DataLoader(language, paths)
+        #data_loader = scramble(data_loader, buffer_size=128)
+        #data_loader = Batchify(data_loader, batch_size=3)
+        for i, data in enumerate(data_loader):
+            print("data=",data)
+            #print()
+            if i > 10:
+                break
+
 
 

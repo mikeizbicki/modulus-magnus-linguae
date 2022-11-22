@@ -2,3 +2,5 @@
 *.swp
 
 models
+nohup*
+__pycache__

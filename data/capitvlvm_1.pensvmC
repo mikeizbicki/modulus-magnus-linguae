@@ -1,16 +1,16 @@
 # PENSVM C
 
-Ubi est Roma?
-Estne Sparta in Italia?
-Ubi est Italia?
-Ubi sunt Syria et Arabia?
-Estne Aegyptus in Asia?
-Ubi sunt Sparta et Delphi?
-Ubi est Brundisium?
-Quid est Brundisium?
-Num Creta oppidum est?
-Estne Brittania insula parva?
-Quid est Tiberis?
-Quid est D?
-Num _Delta littera Latina est?
-Estne II magnus numerus?
+ll|Ubi est Roma?|Roma in Italia est.
+ll|Estne Sparta in Italia?|Sparta in Italia non est.
+ll|Ubi est Italia?|Italia est in Europa.
+ll|Ubi sunt Syria et Arabia?|Syria et Arabia in Asia sunt.
+ll|Estne Aegyptus in Asia?|Aegyptus in Asia non est.
+ll|Ubi sunt Sparta et Delphi?|In Graeca sunt.
+ll|Ubi est Brundisium?|Brundisium est in Italia.
+ll|Quid est Brundisium?|Brundisium oppidum est.
+ll|Num Creta oppidum est?|Creta oppidum non est.
+ll|Estne Britannia insula parva?|Britannia non insula parva, sed insula magna est.
+ll|Quid est Tiberis?|Tiberius fluvius est.
+ll|Quid est D?|D littera Latina est.
+ll|Num _Delta littera Latina est?|_Delta non est littera Latina, sed littera Graeca.
+ll|Estne II magnus numerus?|II non magnus numerus, sed parvus numerus est.
