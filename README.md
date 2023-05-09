@@ -5,9 +5,18 @@ The goal of this project is to get LLMs working with classical languages like La
 
 ## Schedule
 
+We will generally meet 3x/week as a large team on MWF from 9AM-11AM.
+For the first week, we will also meet on Tuesday and may go beyond 11AM.
+At the meetings, we will:
+1. review research papers together
+1. assign tasks to students (individual + groups)
+1. review progress on those tasks
+
+We will use this repo for all of our research communication,
+and so you should all watch the repo and post questions/comments to the issues.
+
 **Week starting May 22:**
 
-We will meet daily as a large team starting at 9AM and going until about 11AM.
 Our goal for the week will be to:
 
 1. Assign everyone tasks to work on (see the Tasks section below) and get started on those tasks.
@@ -29,9 +38,17 @@ Our goal for the week will be to:
     1. https://www.reddit.com/r/MachineLearning/comments/133styi/p_understanding_large_language_models_a/
     1. https://agi-sphere.com/llama-models/
 
-**Week starting May 29:**
 
-In our group meetings we'll take a look at some "finetuning methods:
+**Things we'll read in the future:**
+
+About Latin:
+1. About LLPSI and other resources: https://scholaeinterretiales.wordpress.com/teach-yourself-latin/
+1. LLPSI audiobook: https://www.youtube.com/watch?v=t_Hm6HpnN5k&list=PLU1WuLg45SiyrXahjvFahDuA060P487pV&index=4
+
+BLUE score and machine translation:
+1. https://towardsdatascience.com/foundations-of-nlp-explained-bleu-score-and-wer-metrics-1a5ba06d812b
+
+Finetuning:
 1. [LlamaAcademy: Teach GPTs to understand API documentation with LoRA](https://news.ycombinator.com/item?id=35634120)
 1. [DyLoRA: Parameter Efficient Tuning of Pre-Trained Models](https://news.ycombinator.com/item?id=35514228)
 
