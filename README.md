@@ -17,13 +17,9 @@ and so you should all watch the repo and post questions/comments to the issues.
 
 **Week starting May 22:**
 
-Our goal for the week will be to:
+To prepare for our first meeting:
 
-1. Assign everyone tasks to work on (see the Tasks section below) and get started on those tasks.
-    The tasks very tremendously in difficulty, and so some can be completed in just a few days and some may not be completed over the course of the summer.
-
-1. Understand how LLMs work and how they fit into the Machine Learning/Natural Language Processing ecosystem.
-    There's two main papers you should try to read before Monday:
+1. There's two papers you should read:
     1. The LLAMA paper: <https://arxiv.org/abs/2302.13971>
     1. [Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond](https://arxiv.org/abs/2304.13712)
 
@@ -33,11 +29,18 @@ Our goal for the week will be to:
     and come up with detailed, specific questions about parts that you don't understand.
     I recommend spending about 10 hours total between the two papers.
     We'll start with the LLAMA paper, so if that's the one to prioritize in your reading.
-    The following links might help give you some context of the papers:
+
+1. The following links might help give you some context of the papers:
     1. https://magazine.sebastianraschka.com/p/understanding-large-language-models
     1. https://www.reddit.com/r/MachineLearning/comments/133styi/p_understanding_large_language_models_a/
     1. https://agi-sphere.com/llama-models/
 
+Our goal for the week will be to:
+
+1. Understand the papers above and how LLMs work and how they fit into the Machine Learning/Natural Language Processing ecosystem.
+
+1. Assign everyone tasks to work on and get started on those tasks.
+    The tasks very tremendously in difficulty, and so some can be completed in just a few days and some may not be completed over the course of the summer.
 
 **Things we'll read in the future:**
 
