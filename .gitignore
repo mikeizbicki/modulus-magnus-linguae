@@ -1,5 +1,5 @@
-*.swo
-*.swp
+*.sw
+*.sw?
 
 models
 nohup*

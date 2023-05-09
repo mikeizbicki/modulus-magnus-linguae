@@ -1,0 +1,15 @@
+# PENSVM A
+
+ls|Nilus {la[fluvius], en[~]} est.|river
+ls|Nilus {la[~], en[river]} est.|fluvius
+ls|Nilus {en[river], la[~]} est.|fluvius
+ls|Nilus {en[~], la[fluvius]} est.|river
+
+ls|Nilus et Rhenus {la[fluvii], en[~]} sunt.|river
+ls|Nilus et Rhenus {la[~], en[river]} sunt.|fluvii
+
+ls|Nilus {la[et], en[~]} Rhenus fluvii sunt.|and
+ls|Nilus {la[~], en[and]} Rhenus fluvii sunt.|et
+
+ls|Nilus {la[et], en[~]} Rhenus {la[fluvii], en[~]} sunt.|and river
+ls|Nilus {la[~], en[and]} Rhenus {la[~], en[river]} sunt.|et fluvii

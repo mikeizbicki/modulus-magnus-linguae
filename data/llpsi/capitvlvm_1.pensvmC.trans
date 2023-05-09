@@ -1,0 +1,16 @@
+# PENSVM C
+
+ll|Ubi est Roma? {en[Rome is in Italy.], la[~]}|Roma in Italia est.
+ll|Estne Sparta in Italia? {en[Sparta is in Italy.], la[~]}|Sparta in Italia non est.
+ll|Ubi est Italia? {en[Italy is in Europe.], la[~]}|Italia est in Europa.
+ll|Ubi sunt Syria et Arabia? {en[Syria and Arabia are in Asia.], la[~]}|Syria et Arabia in Asia sunt.
+ll|Estne Aegyptus in Asia? {en[Aegyptus is not in Arabia.], la[~]}|Aegyptus in Asia non est.
+ll|Ubi sunt Sparta et Delphi? {en[They are in Greece.], la[~]}|In Graeca sunt.
+ll|Ubi est Brundisium? {en[Brundisium is in Italy.], la[~]}|Brundisium est in Italia.
+ll|Quid est Brundisium? {en[Brundisium is a city.], la[~]}|Brundisium oppidum est.
+ll|Num Creta oppidum est? {en[Crete is not a city.], la[~]}|Creta oppidum non est.
+ll|Estne Britannia insula parva? {en[Brittain is not a small island, but a big island.], la[~]}|Britannia non insula parva, sed insula magna est.
+ll|Quid est Tiberis? {en[The Tiber is a river.], la[~]}|Tiberis fluvius est.
+ll|Quid est D? {en[D is a Latin letter.], la[~]}|D littera Latina est.
+ll|Num _Delta littera Latina est? {en[_Delta is not a Latin letter, but a Greek letter.], la[~]}|_Delta non est littera Latina, sed littera Graeca.
+ll|Estne II magnus numerus? {en[II is not a big number, but a small number.], la[~]}|II non magnus numerus, sed parvus numerus est.

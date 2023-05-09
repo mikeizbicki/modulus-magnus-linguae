@@ -1,11 +1,11 @@
 # PENSVM A
 
 ls|Nilus fluvi~ est.|us
-ls|Nilus et Rhenus fluvi~ ~.|us sunt
+ls|Nilus et Rhenus fluvi~ ~.|i sunt
 ls|Creta insul~ ~.|a est
-ls|Creta et Rhodus insula~ sunt.|ae
+ls|Creta et Rhodus insula~ sunt.|e
 ls|Brundisium oppid~ est.|um
-ls|Brundisium et Tusculum oppid~ ~.|ae sunt
+ls|Brundisium et Tusculum oppid~ ~.|a sunt
 
 ls|Rhenus fluvi~ magn~ est.|us us
 ls|Tiberis est fluvi~ parv~.|us us
@@ -21,11 +21,11 @@ ls|Lesbos et Chios et Naxus sunt insul~ Graec~.|ae ae
 ls|In Gracia mult~ insul~ sunt.|ae ae
 ls|In Gallia sunt mult~ fluvi~.|i i
 ls|In Italia mult~ oppid~ sunt.|a a
-ls|In Arabia sunt pauc~ fluvi~ et pauc oppid~.|i i a a
+ls|In Arabia sunt pauc~ fluvi~ et pauc~ oppid~.|i i a a
 
 ls|A et B letter~ Latin~ sunt.|ae ae
 ls|C quoque litter~ Latin~ est.|a a
 ls|*Multi* et *pauci* vocabul~ Latin~ sunt.|a a
 ls|*Ubi* quoque vocabul~ Latin~ est.|um um
 ls|I et II numer~ Roman~ sunt.|i i
-ls|III quoque nume~ Roman~ est.|us us
+ls|III quoque numer~ Roman~ est.|us us
