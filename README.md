@@ -40,7 +40,7 @@ Our goal for the week will be to:
 1. Understand the papers above and how LLMs work and how they fit into the Machine Learning/Natural Language Processing ecosystem.
 
 1. Assign everyone tasks to work on and get started on those tasks.
-    The tasks very tremendously in difficulty, and so some can be completed in just a few days and some may not be completed over the course of the summer.
+    The tasks vary tremendously in difficulty, and so some can be completed in just a few days and some may not be completed over the course of the summer.
 
 **Things we'll read in the future:**
 
