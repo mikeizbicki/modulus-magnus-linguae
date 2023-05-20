@@ -47,6 +47,28 @@ Our goal for the week will be to:
 About Latin:
 1. About LLPSI and other resources: https://scholaeinterretiales.wordpress.com/teach-yourself-latin/
 1. LLPSI audiobook: https://www.youtube.com/watch?v=t_Hm6HpnN5k&list=PLU1WuLg45SiyrXahjvFahDuA060P487pV&index=4
+1. Grammars:
+    1. https://dcc.dickinson.edu/grammar/latin/questions
+1. ChatGPT videos:
+    1. Ancient Greek: https://www.youtube.com/watch?v=vi1lDgA9SxM
+    1. Latin: https://www.youtube.com/watch?v=iNTEW0PNqjU
+
+Business of LLMs:
+1. https://www.semianalysis.com/p/google-we-have-no-moat-and-neither
+
+Academic disruption of LLMs:
+1. https://www.reddit.com/r/mlscaling/comments/13309rx/choose_your_weapon_survival_strategies_for/
+1. A brief history of LLaMA models: https://news.ycombinator.com/item?id=35736872
+
+Language capabilities:
+1. Teaching ChatGPT to speak my son's invented language: https://news.ycombinator.com/item?id=35515208
+
+Prompt engineering:
+1. https://github.com/brexhq/prompt-engineering
+1. https://learnprompting.org/docs/intro
+1. https://www.promptingguide.ai/
+1. https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/
+1. https://news.ycombinator.com/item?id=35942583
 
 BLUE score and machine translation:
 1. https://towardsdatascience.com/foundations-of-nlp-explained-bleu-score-and-wer-metrics-1a5ba06d812b
@@ -54,6 +76,22 @@ BLUE score and machine translation:
 Finetuning:
 1. [LlamaAcademy: Teach GPTs to understand API documentation with LoRA](https://news.ycombinator.com/item?id=35634120)
 1. [DyLoRA: Parameter Efficient Tuning of Pre-Trained Models](https://news.ycombinator.com/item?id=35514228)
+
+Tiny LLM:
+1. https://www.reddit.com/r/MachineLearning/comments/13j0spj/r_tiny_language_models_below_10m_parameters_or/
+
+Prompting languages:
+1. https://github.com/eth-sri/lmql
+1. https://github.com/microsoft/guidance
+1. https://www.pinecone.io/learn/langchain/
+
+Getting models to run in low resource settings:
+1. https://news.ycombinator.com/item?id=35937505
+
+Formal languages:
+1. On the Ability and Limitations of Transformers to Recognize Formal Languages: https://arxiv.org/abs/2009.11264
+1. Transformer Working Memory Enables Regular Language Reasoning and Natural Language Length Extrapolation: https://arxiv.org/abs/2305.03796
+1. NTM: https://arxiv.org/abs/1410.5401
 
 ## Tasks
 
