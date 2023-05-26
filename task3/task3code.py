@@ -26,5 +26,6 @@ if __name__ == "__main__":
     response = asyncio.run(query(testPrompt))
     prompt = response[0].prompt
     answer = response[0].variables['ANSWER']
-    file_name = '/home/asawyer/summer23/modulus-magnus-linguae/task3/sample_answers_Task3.json'
-    print(match_test(response, file_name))
+    print(prompt,answer)
+   # file_name = '/home/asawyer/summer23/modulus-magnus-linguae/task3/sample_answers_Task3.json'
+   # print(match_test(response, file_name))

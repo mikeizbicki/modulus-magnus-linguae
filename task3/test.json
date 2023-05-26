@@ -1,0 +1,13 @@
+{
+    "codes": [
+        {
+            "code":"argmax\"answer this latin Hello ~. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "world"
+        },
+        {
+            "code":"argmax\"answer this latin Nilus fluvi~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "Nilus fluvi is a type of flu that is caused by the Nilus virus."
+        }
+    ]
+}
+
