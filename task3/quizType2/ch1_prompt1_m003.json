@@ -1,0 +1,28 @@
+{
+    "codes": [
+        {
+            "code":"argmax\"answer this latin Sicilia ~ est. [ANSWER] \" from \"openai/text-davinci-003\"", 
+            "answer": "insula"
+        },
+        {
+            "code":"argmax\"answer this latin Italia insula ~ est. [ANSWER] \" from \"openai/text-davinci-003\"", 
+            "answer": "non"
+        },
+        {
+            "code":"argmax\"answer this latin Rhenus ~ est. [ANSWER] \" from \"openai/text-davinci-003\"",
+            "answer": "fluvius"
+        },
+        {
+            "code":"argmax\"answer this latin Brundisium ~ est. [ANSWER] \" from \"openai/text-davinci-003\"", 
+            "answer": "oppidum"
+        },
+        {
+            "code":"argmax\"answer this latin Sicilia et Sardinia ~ magnae sunt. [ANSWER] \" from \"openai/text-davinci-003\"",
+            "answer": "insulae"
+        },
+        {
+            "code":"argmax\"answer this latin Melita insula ~ est. [ANSWER] \" from \"openai/text-davinci-003\"",
+            "answer": "parva"
+        }
+    ]
+}

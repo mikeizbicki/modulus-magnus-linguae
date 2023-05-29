@@ -1,0 +1,28 @@
+{
+    "codes": [
+        {
+            "code":"argmax\"answer this latin Britannia non ~ parva, sed ~ ~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "insula insula magna"
+        },
+        {
+            "code":"argmax\"answer this latin Brundisium non ~ ~, sed ~ magnum est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "oppidum parvum oppidum"
+        },
+        {
+            "code":"argmax\"answer this latin Est~ Brundisium in Graecia? [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "ne"
+        },
+        {
+            "code":"argmax\"answer this latin Brundisium ~ est in Gracia, ~ in Italia. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "non sed"
+        },
+        {
+            "code":"argmax\"answer this latin ~ est Sparta? [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "Ubi"
+        },
+        {
+            "code":"argmax\"answer this latin Delphi ~ oppidum Graecum est. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "quoque"
+        }
+    ]
+}

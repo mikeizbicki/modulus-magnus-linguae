@@ -1,0 +1,5 @@
+model, quizCh, promptStyle, accuracy
+m001, ch2, prompt1, 0.0
+m001, ch1, prompt1, 0.0
+m003, ch1, prompt1, 0.0
+m001, ch1, prompt2, 0.0

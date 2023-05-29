@@ -1,0 +1,29 @@
+{
+    "codes": [
+        {
+            "code":"argmax\"answer this latin Melita insul~ parv~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "a a"
+        },
+        {
+            "code":"argmax\"answer this latin Lesbos et Chios et Naxus sunt insul~ Graec~. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "ae ae"
+        },
+        {
+            "code":"argmax\"answer this latin In Gracia mult~ insul~ sunt. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "ae ae"
+        },
+        {
+            "code":"argmax\"answer this latin A et B letter~ Latin~ sunt. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "ae ae"
+        },
+        {
+            "code":"argmax\"answer this latin In Arabia sunt pauc~ fluvi~ et pauc~ oppid~. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "i i a a"
+        },
+        {
+            "code":"argmax\"answer this latin III quoque numer~ Roman~ est. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "us us"
+        }
+    ]
+}
+

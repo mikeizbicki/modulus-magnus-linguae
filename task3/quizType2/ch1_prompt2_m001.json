@@ -1,0 +1,28 @@
+{
+    "codes": [
+        {
+            "code":"argmax\"Fill the blank/blanks: Sicilia ~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "insula"
+        },
+        {
+            "code":"argmax\"Fill the blank/blanks: Italia insula ~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "non"
+        },
+        {
+            "code":"argmax\"Fill the blank/blanks: Rhenus ~ est. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "fluvius"
+        },
+        {
+            "code":"argmax\"Fill the blank/blanks: Brundisium ~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
+            "answer": "oppidum"
+        },
+        {
+            "code":"argmax\"Fill the blank/blanks: Sicilia et Sardinia ~ magnae sunt. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "insulae"
+        },
+        {
+            "code":"argmax\"Fill the blank/blanks: Melita insula ~ est. [ANSWER] \" from \"openai/text-ada-001\"",
+            "answer": "parva"
+        }
+    ]
+}
