@@ -32,7 +32,7 @@ async def main():
         accuracy = sum(results)/len(results)
     
         # parse json file
-        infoList = file_path.stem.split("_")
+        infoList = file_path.stem.split(".")
     
         # printing row of csv file
         output = [infoList[2], infoList[0], infoList[1], str(accuracy)]
