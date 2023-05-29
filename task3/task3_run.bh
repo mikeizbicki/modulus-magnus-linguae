@@ -1,4 +1,0 @@
-for filename in *.json; do
-    python3 task3updatedcode.py "$filename"
-
-done
