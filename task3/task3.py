@@ -4,30 +4,31 @@ import json
 import os
 import sys
 import csv
-from  pathlib import Path
+from pathlib import Path
 
 async def query(c):
     '''takes in a dict that includes lmql prompt and the true answer,
     returns 1 if the model is correctand 0 if wrong'''
-    # formating answer to use to test exact match
-    correctAnswer = "\n\n" + c["answer"]
-
-    # querying lmql 
     output = (await lmql.run(c["code"], output_writer=lmql.stream("RESPONSE")))
-    if output[0].variables['ANSWER'] == correctAnswer:
+    if output[0].variables['ANSWER'] == c["answer"]:
         return 1
     return 0
 
-def calcAccuracy(data):
-    '''calculates accuracy based on outputs from query'''
-    codes=data["codes"]
-    
+def calcAccuracy(codes):
+    '''calculates accuracy based on outputs from query
+
+    >>> print(calcAccuracy([{'code': 'argmax "Q: Fill in the Q: Fill in the missing words: Italia ~ Europa est; Graecia ~ in Europa est. Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B","C", "D"]', 'answer': 'A'}, {'code': 'argmax "Q: Fill in the Q: Fill in the missing words: ~ est Arabia? In Asia est Arabia. Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B","C", "D"]', 'answer': 'C'}]))
+    0.5
+
+    >>> print(calcAccuracy([{'code': 'argmax "Q: Fill in the tilde: Italia in Europa ~. Answer Choices: (A) est (B) sunt A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B"]', 'answer': 'A'}, {'code': 'argmax "Q: Fill in the tilde: Italia et Gallia in Europa ~. Answer Choices: (A) est (B) sunt A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B"]', 'answer': 'B'}]))
+    1.0
+
+    '''
     # using query to prompt model with questions in parallel 
     loop = asyncio.get_event_loop()
     results = loop.run_until_complete(asyncio.gather(*[query(c) for c in codes]))
-    loop.close()
 
-    return sum(results)/len(results)
+    return round(sum(results)/len(results), 2)
 
 def main():
     # printing csv column names
@@ -41,7 +42,7 @@ def main():
 
         # printing string of what will be a row of the csv file
         infoList = file_path.stem.split(".")
-        output = [infoList[2], infoList[0], infoList[1], str(calcAccuracy(data))]
+        output = [infoList[2], infoList[0], infoList[1], str(calcAccuracy(data["codes"]))]
         print(", ".join(output))
 
 if __name__ == "__main__":

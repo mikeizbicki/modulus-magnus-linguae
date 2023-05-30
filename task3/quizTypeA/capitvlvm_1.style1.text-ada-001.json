@@ -1,12 +1,12 @@
 {
     "codes": [
         {
-            "code":"argmax\"answer this latin Hello ~. [ANSWER] \" from \"openai/text-ada-001\"", 
-            "answer": "world"
+	    "code": "argmax \"Q: Fill in the tilde: Italia in Europa ~. Answer Choices: (A) est (B) sunt A: [ANSWER]\" from \"openai/text-davinci-003\" where ANSWER in [\"A\", \"B\"]",
+            "answer": "A"
         },
         {
-            "code":"argmax\"answer this latin Nilus fluvi~ est. [ANSWER] \" from \"openai/text-ada-001\"", 
-            "answer": "Nilus fluvi is a type of flu that is caused by the Nilus virus."
+	    "code": "argmax \"Q: Fill in the tilde: Italia et Gallia in Europa ~. Answer Choices: (A) est (B) sunt A: [ANSWER]\" from \"openai/text-davinci-003\" where ANSWER in [\"A\", \"B\"]",
+            "answer": "B"
         }
     ]
 }
