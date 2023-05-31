@@ -5,6 +5,7 @@ import os
 import sys
 import csv
 from pathlib import Path
+import argparse
 
 async def query(c):
     '''takes in a dict that includes lmql prompt and the true answer,
@@ -17,10 +18,20 @@ async def query(c):
 def calcAccuracy(codes):
     '''calculates accuracy based on outputs from query
 
-    >>> print(calcAccuracy([{'code': 'argmax "Q: Fill in the Q: Fill in the missing words: Italia ~ Europa est; Graecia ~ in Europa est. Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B","C", "D"]', 'answer': 'A'}, {'code': 'argmax "Q: Fill in the Q: Fill in the missing words: ~ est Arabia? In Asia est Arabia. Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B","C", "D"]', 'answer': 'C'}]))
+    >>> calcAccuracy([{'code': ('argmax "Q: Fill in the missing words: Italia ~ Europa est; Graecia ~ in Europa est. '
+    ...                 'Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed '
+    ...                 'A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B","C", "D"]'),'answer': 'A'}, {'code': ('argmax' 
+    ...                 '"Q: Fill in the missing words: ~ est Arabia? In Asia est Arabia. '
+    ...                 'Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed '
+    ...                 'A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B","C", "D"]'),'answer':'C'}])
     0.5
 
-    >>> print(calcAccuracy([{'code': 'argmax "Q: Fill in the tilde: Italia in Europa ~. Answer Choices: (A) est (B) sunt A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B"]', 'answer': 'A'}, {'code': 'argmax "Q: Fill in the tilde: Italia et Gallia in Europa ~. Answer Choices: (A) est (B) sunt A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B"]', 'answer': 'B'}]))
+    >>> calcAccuracy([{'code': ('argmax "Q: Fill in the tilde: Italia in Europa ~. '
+    ...                 'Answer Choices: (A) est (B) sunt '
+    ...                 'A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B"]'),'answer': 'A'}, {'code': ('argmax'
+    ...                 '"Q: Fill in the tilde: Italia et Gallia in Europa ~. '
+    ...                 'Answer Choices: (A) est (B) sunt '
+    ...                 'A: [ANSWER]" from "openai/text-davinci-003" where ANSWER in ["A", "B"]'),'answer':'B'}])
     1.0
 
     '''
@@ -35,9 +46,11 @@ def main():
     print("model, quizCh, promptStyle, accuracy")
 
     # opening json file
-    directory = sys.argv[1]
-    for file_path in (Path.cwd()/directory).glob("*.json"):
-        with file_path.open(mode='r') as f:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('second_argument')
+
+    for file_path in (Path.cwd()/parser.parse_args().second_argument).glob("*.json"):
+        with file_path.open(mode='r',encoding="utf-8") as f:
             data = json.load(f)
 
         # printing string of what will be a row of the csv file
