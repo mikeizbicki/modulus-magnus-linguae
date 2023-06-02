@@ -1,0 +1,12 @@
+{
+    "codes": [
+        {
+	    "code": "argmax \"Q: Fill in the missing words: Italia ~ Europa est; Graecia ~ in Europa est. Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed A: [ANSWER]\" from \"openai/text-davinci-003\" where ANSWER in [\"A\", \"B\",\"C\", \"D\"]",
+            "answer": "A"
+        },
+        {
+	    "code": "argmax \"Q: Fill in the missing words: ~ est Arabia? In Asia est Arabia. Answer Choices: (A) in quoque (B) ne non (C) ubi (D) non sed A: [ANSWER]\" from \"openai/text-davinci-003\" where ANSWER in [\"A\", \"B\",\"C\", \"D\"]",
+            "answer": "C"
+        }
+    ]
+}
